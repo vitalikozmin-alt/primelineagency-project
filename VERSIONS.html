@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1+1 Dance Studio — Версии сайта</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Lato', sans-serif; background: #f5f5f5; color: #1a1a1a; padding: 40px 20px; }
+    .wrap { max-width: 860px; margin: 0 auto; }
+    h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 6px; }
+    .sub { color: #888; font-size: 0.9rem; margin-bottom: 40px; }
+
+    .version-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 48px; }
+
+    .version-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 24px 22px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border-left: 4px solid #ccc;
+      transition: box-shadow 0.2s;
+    }
+    .version-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.12); }
+    .version-card.current { border-left-color: #e05d45; }
+    .version-card.dark-theme { border-left-color: #c9a84c; }
+    .version-card.light-theme { border-left-color: #e05d45; }
+
+    .v-header { display: flex; align-items: center; justify-content: space-between; }
+    .v-num { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #aaa; }
+    .v-badge {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 3px 10px; border-radius: 20px;
+    }
+    .badge-current { background: #e05d45; color: #fff; }
+    .badge-dark    { background: #1c1c1c; color: #e8c97a; }
+    .badge-light   { background: #fef3e8; color: #e05d45; border: 1px solid rgba(224,93,69,0.2); }
+
+    .v-name { font-size: 1.05rem; font-weight: 700; }
+    .v-date { font-size: 12px; color: #aaa; }
+    .v-desc { font-size: 0.88rem; color: #666; line-height: 1.6; }
+    .v-link {
+      display: inline-block;
+      margin-top: 4px;
+      background: #1a1a1a;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 8px 18px;
+      border-radius: 6px;
+      width: fit-content;
+      transition: background 0.2s;
+    }
+    .v-link:hover { background: #e05d45; }
+
+    /* CHANGELOG */
+    .changelog h2 { font-size: 1.3rem; font-weight: 700; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #e0e0e0; }
+    .log-entry { margin-bottom: 32px; }
+    .log-version { font-size: 1rem; font-weight: 700; margin-bottom: 4px; display: flex; align-items: center; gap: 10px; }
+    .log-date { font-size: 12px; color: #aaa; font-weight: 400; }
+    .log-list { list-style: none; padding-left: 0; }
+    .log-list li {
+      padding: 5px 0 5px 20px;
+      position: relative;
+      font-size: 0.9rem;
+      color: #555;
+      border-bottom: 1px solid #f0f0f0;
+      line-height: 1.5;
+    }
+    .log-list li:last-child { border-bottom: none; }
+    .log-list li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 12px;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #e05d45;
+    }
+    .log-list li.fix::before { background: #4caf50; }
+    .log-list li.note::before { background: #c9a84c; }
+    .tag {
+      display: inline-block;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 1px 7px; border-radius: 4px; margin-right: 5px;
+    }
+    .tag-new  { background: #e05d45; color: #fff; }
+    .tag-fix  { background: #4caf50; color: #fff; }
+    .tag-note { background: #f0cc50; color: #333; }
+
+    /* INFO BOX */
+    .info-box {
+      background: #fff;
+      border-radius: 12px;
+      padding: 24px 22px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      margin-top: 40px;
+    }
+    .info-box h2 { font-size: 1.1rem; font-weight: 700; margin-bottom: 14px; }
+    .info-box p { font-size: 0.9rem; color: #555; line-height: 1.7; margin-bottom: 10px; }
+    .info-box p:last-child { margin-bottom: 0; }
+    .info-box strong { color: #1a1a1a; }
+    .green { color: #4caf50; font-weight: 700; }
+    .red   { color: #e05d45; font-weight: 700; }
+
+    @media (max-width: 600px) { .version-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>1+1 Dance Studio — Версии сайта</h1>
+  <p class="sub">Все версии хранятся, ничего не удаляется. index.html = последняя актуальная версия.</p>
+
+  <div class="version-grid">
+
+    <div class="version-card dark-theme">
+      <div class="v-header">
+        <span class="v-num">v1 → v2</span>
+        <span class="v-badge badge-dark">Тёмная тема</span>
+      </div>
+      <div class="v-name">Тёмный премиум дизайн</div>
+      <div class="v-date">Первая версия · апрель 2026</div>
+      <div class="v-desc">Тёмный hero с анимацией zoom, золото/тёмный/белый. Все данные собраны с сайта. Убраны emoji, добавлены SVG-иконки, исправлен YouTube.</div>
+      <span style="font-size:12px;color:#c9a84c;">⚠ Файл не сохранён (был перезаписан)</span>
+    </div>
+
+    <div class="version-card light-theme">
+      <div class="v-header">
+        <span class="v-num">v3</span>
+        <span class="v-badge badge-light">Светлая тема</span>
+      </div>
+      <div class="v-name">Светлый дизайн (без fix)</div>
+      <div class="v-date">index-v3-light.html · апрель 2026</div>
+      <div class="v-desc">Полная переработка на светлую тему. Коралловые акценты, разделённый hero, тёплые кремовые фоны. Лайтбокс ещё не работал.</div>
+      <a href="index-v3-light.html" class="v-link" target="_blank">Открыть v3</a>
+    </div>
+
+    <div class="version-card current light-theme">
+      <div class="v-header">
+        <span class="v-num">v4 — ТЕКУЩАЯ</span>
+        <span class="v-badge badge-current">Актуальная</span>
+      </div>
+      <div class="v-name">Светлый дизайн + исправления</div>
+      <div class="v-date">index-v4-light-fixed.html · апрель 2026</div>
+      <div class="v-desc">Исправлен лайтбокс галереи (клики теперь работают). pointer-events убран с ::after. onclick перенесён на div. YouTube embed работает на хостинге.</div>
+      <a href="index-v4-light-fixed.html" class="v-link" target="_blank">Открыть v4</a>
+    </div>
+
+    <div class="version-card current">
+      <div class="v-header">
+        <span class="v-num">index.html</span>
+        <span class="v-badge badge-current">Production</span>
+      </div>
+      <div class="v-name">Всегда последняя версия</div>
+      <div class="v-date">Копия актуальной версии</div>
+      <div class="v-desc">index.html всегда равна последней версии. Заливать на хостинг именно этот файл.</div>
+      <a href="index.html" class="v-link" target="_blank">Открыть сайт</a>
+    </div>
+
+  </div>
+
+  <!-- CHANGELOG -->
+  <div class="changelog">
+    <h2>Журнал изменений</h2>
+
+    <div class="log-entry">
+      <div class="log-version">
+        v4 — Светлый дизайн, исправления лайтбокса
+        <span class="log-date">апрель 2026</span>
+      </div>
+      <ul class="log-list">
+        <li class="fix"><span class="tag tag-fix">Fix</span> Лайтбокс галереи не открывался — псевдоэлемент <code>::after</code> перехватывал клики. Добавлен <code>pointer-events: none</code>.</li>
+        <li class="fix"><span class="tag tag-fix">Fix</span> <code>onclick</code> перенесён с тега <code>img</code> на родительский <code>div.gallery-item</code> — клик теперь срабатывает по всей области.</li>
+        <li class="note"><span class="tag tag-note">Note</span> YouTube embed: на локальном файле браузер может блокировать. На хостинге (реальный домен) — работает нормально.</li>
+        <li class="note"><span class="tag tag-note">Note</span> Введена система версий. Старые файлы не удаляются, хранятся как <code>index-vN-name.html</code>.</li>
+      </ul>
+    </div>
+
+    <div class="log-entry">
+      <div class="log-version">
+        v3 — Полная смена темы на светлую
+        <span class="log-date">апрель 2026</span>
+      </div>
+      <ul class="log-list">
+        <li><span class="tag tag-new">New</span> Фон изменён с тёмного (#0d0d0d) на тёплый кремово-белый (#fdfcf8 / #fef3e8).</li>
+        <li><span class="tag tag-new">New</span> Добавлен второй акцентный цвет — коралловый (#e05d45) для живости и детской энергии.</li>
+        <li><span class="tag tag-new">New</span> Hero переработан: split-layout (текст слева на кремовом, фото справа).</li>
+        <li><span class="tag tag-new">New</span> Логотип переключается: белый на прозрачном хедере, чёрный после скролла.</li>
+        <li><span class="tag tag-new">New</span> Блок доверия с цифрами (4 преподавателя, 10+ лет, Nr.1) прямо в hero.</li>
+        <li><span class="tag tag-new">New</span> Карточки курсов: фото + текст снизу, без тёмного оверлея на всю карточку.</li>
+        <li><span class="tag tag-new">New</span> Расписание с цветовым кодом по группам: коралловый (дети), золотой (соревнования), серый (взрослые).</li>
+        <li><span class="tag tag-new">New</span> Цены — белые карточки с цветной полосой сверху (коралловый для детей, золото для взрослых).</li>
+        <li><span class="tag tag-new">New</span> Форма и контакты — светлые, на белом фоне.</li>
+        <li><span class="tag tag-new">New</span> Footer оставлен тёмным — контраст придаёт завершённость.</li>
+        <li><span class="tag tag-new">New</span> Декоративные элементы (круг, прямоугольник) у фото в разделе "О нас".</li>
+      </ul>
+    </div>
+
+    <div class="log-entry">
+      <div class="log-version">
+        v2 — Убраны emoji, исправлен YouTube
+        <span class="log-date">апрель 2026</span>
+      </div>
+      <ul class="log-list">
+        <li class="fix"><span class="tag tag-fix">Fix</span> Все видимые emoji заменены на inline SVG-иконки (Feather-style).</li>
+        <li class="fix"><span class="tag tag-fix">Fix</span> YouTube: заменён на thumbnail-превью + кнопка play. Iframe загружается только по клику (autoplay).</li>
+        <li class="fix"><span class="tag tag-fix">Fix</span> Embed-домен изменён на <code>youtube-nocookie.com</code> — меньше блокировок.</li>
+        <li class="fix"><span class="tag tag-fix">Fix</span> Footer YouTube-ссылка исправлена с embed URL на <code>watch?v=</code>.</li>
+        <li class="fix"><span class="tag tag-fix">Fix</span> Контактные иконки (телефон, email, адрес, FB, IG) — SVG вместо emoji.</li>
+        <li class="fix"><span class="tag tag-fix">Fix</span> Звёзды в отзывах: CSS clip-path вместо ★.</li>
+        <li class="fix"><span class="tag tag-fix">Fix</span> Иконки цен: SVG-человечек вместо 🧒/💃.</li>
+        <li class="fix"><span class="tag tag-fix">Fix</span> Соцсети в footer: SVG иконки FB/IG/YouTube.</li>
+      </ul>
+    </div>
+
+    <div class="log-entry">
+      <div class="log-version">
+        v1 — Первая версия
+        <span class="log-date">апрель 2026</span>
+      </div>
+      <ul class="log-list">
+        <li><span class="tag tag-new">New</span> Сайт создан с нуля на основе данных scraped с 1dance1.ee через Playwright.</li>
+        <li><span class="tag tag-new">New</span> Собраны все тексты, изображения (wp-content), YouTube, контакты, банковские реквизиты.</li>
+        <li><span class="tag tag-new">New</span> Тёмный дизайн: gold/dark/white палитра, Playfair Display + Lato.</li>
+        <li><span class="tag tag-new">New</span> Разделы: Hero, О нас, Видео, Учителя (4 чел.), Галерея, Курсы, Цены, Расписание, Отзывы, Форма, Банк, Footer.</li>
+        <li><span class="tag tag-new">New</span> Лайтбокс для галереи, scroll-reveal анимации, мобильная адаптация, burger-меню.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- INFO: YouTube -->
+  <div class="info-box">
+    <h2>Вопросы и ответы</h2>
+
+    <p><strong>Почему YouTube видео не работает локально (при открытии файла из папки)?</strong><br/>
+    Браузер блокирует iframe с внешних доменов при загрузке через <code>file://</code> протокол — это политика безопасности. Это нормально и ожидаемо. Решения: (1) открывать через локальный сервер (<code>npx serve .</code>), (2) залить на хостинг.</p>
+
+    <p><strong>Будет ли YouTube работать на хостинге?</strong><br/>
+    <span class="green">Да, будет работать.</span> Как только сайт загружен на реальный веб-сервер с доменом — embed через <code>youtube-nocookie.com</code> работает корректно. Кнопка play показывает превью, клик загружает iframe с autoplay.</p>
+
+    <p><strong>Что если автор видео запретил embed?</strong><br/>
+    <span class="red">Тогда iframe покажет ошибку.</span> Решение: открыть настройки видео на YouTube → Правка → снять галочку "Запретить встраивание". Или использовать ссылку на YouTube напрямую вместо embed.</p>
+
+    <p><strong>Правило версионности с этого момента:</strong><br/>
+    Перед каждым крупным изменением — <strong>копировать текущий index.html</strong> под именем <code>index-vN-описание.html</code>. Актуальный файл всегда = <code>index.html</code>.</p>
+  </div>
+
+</div>
+</body>
+</html>
