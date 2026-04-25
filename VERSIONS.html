@@ -29,6 +29,8 @@
     .version-card.current { border-left-color: #e05d45; }
     .version-card.dark-theme { border-left-color: #c9a84c; }
     .version-card.light-theme { border-left-color: #e05d45; }
+    .version-card.human-theme { border-left-color: #b8392a; }
+    .badge-human { background: #f4eee2; color: #b8392a; border: 1px solid rgba(184,57,42,0.3); }
 
     .v-header { display: flex; align-items: center; justify-content: space-between; }
     .v-num { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #aaa; }
@@ -142,15 +144,37 @@
       <a href="index-v3-light.html" class="v-link" target="_blank">Открыть v3</a>
     </div>
 
-    <div class="version-card current light-theme">
+    <div class="version-card light-theme">
       <div class="v-header">
-        <span class="v-num">v4 — ТЕКУЩАЯ</span>
-        <span class="v-badge badge-current">Актуальная</span>
+        <span class="v-num">v4</span>
+        <span class="v-badge badge-light">Светлая тема</span>
       </div>
       <div class="v-name">Светлый дизайн + исправления</div>
       <div class="v-date">index-v4-light-fixed.html · апрель 2026</div>
       <div class="v-desc">Исправлен лайтбокс галереи (клики теперь работают). pointer-events убран с ::after. onclick перенесён на div. YouTube embed работает на хостинге.</div>
       <a href="index-v4-light-fixed.html" class="v-link" target="_blank">Открыть v4</a>
+    </div>
+
+    <div class="version-card light-theme">
+      <div class="v-header">
+        <span class="v-num">v5</span>
+        <span class="v-badge badge-light">Светлая bold</span>
+      </div>
+      <div class="v-name">Bold-вариант светлой темы</div>
+      <div class="v-date">index-v5-bold.html · апрель 2026</div>
+      <div class="v-desc">Эксперимент с более жирной типографикой и контрастами в светлой теме. По мнению заказчика — выглядел слишком "AI", вместе с v4 послужил отправной точкой для v6.</div>
+      <a href="index-v5-bold.html" class="v-link" target="_blank">Открыть v5</a>
+    </div>
+
+    <div class="version-card current human-theme">
+      <div class="v-header">
+        <span class="v-num">v6 — ТЕКУЩАЯ</span>
+        <span class="v-badge badge-human">Human · anti-AI</span>
+      </div>
+      <div class="v-name">Редакторский / scrapbook дизайн</div>
+      <div class="v-date">index-v6-human.html · апрель 2026</div>
+      <div class="v-desc">Полная переработка дизайна, чтобы лендинг не читался как AI: полароидные фото с наклоном и "скотчем", расписание как печатная афиша, цены как театральные билеты с перфорацией, отзывы как 3 разные записки, шрифты Fraunces + Inter + Caveat, бумажный фон, асимметричные секции. Контент сохранён 1:1 с v4 (эстонский).</div>
+      <a href="index-v6-human.html" class="v-link" target="_blank">Открыть v6</a>
     </div>
 
     <div class="version-card current">
@@ -159,7 +183,7 @@
         <span class="v-badge badge-current">Production</span>
       </div>
       <div class="v-name">Всегда последняя версия</div>
-      <div class="v-date">Копия актуальной версии</div>
+      <div class="v-date">= index-v6-human.html</div>
       <div class="v-desc">index.html всегда равна последней версии. Заливать на хостинг именно этот файл.</div>
       <a href="index.html" class="v-link" target="_blank">Открыть сайт</a>
     </div>
@@ -169,6 +193,39 @@
   <!-- CHANGELOG -->
   <div class="changelog">
     <h2>Журнал изменений</h2>
+
+    <div class="log-entry">
+      <div class="log-version">
+        v6 — Human / anti-AI редизайн
+        <span class="log-date">апрель 2026</span>
+      </div>
+      <ul class="log-list">
+        <li><span class="tag tag-new">New</span> Полностью новый визуальный язык: scrapbook + редакторский журнал. Цель — чтобы лендинг не читался как сделанный AI.</li>
+        <li><span class="tag tag-new">New</span> Шрифты заменены на пару <code>Fraunces + Inter + Caveat</code> вместо стандартной AI-пары Playfair+Lato.</li>
+        <li><span class="tag tag-new">New</span> Палитра: тёплый бумажный фон <code>#f4eee2</code>, чернила <code>#1a1612</code>, приглушённый красный <code>#b8392a</code>, охра <code>#c08a2e</code>, тёмно-зелёный <code>#2e4a3f</code>.</li>
+        <li><span class="tag tag-new">New</span> Hero без "split 50/50": крупная типографика "Tantsi. Võida. Naera." + полароидное фото с наклоном и "скотчем" + штамп "Nr.1 Pirital".</li>
+        <li><span class="tag tag-new">New</span> Учителя: 1 featured (Irina, peatreener) + 3 trio с разными углами наклона полароидов.</li>
+        <li><span class="tag tag-new">New</span> Расписание сделано как печатная афиша (poster) с таблицей дней × времён и ленточками-скотчем по углам.</li>
+        <li><span class="tag tag-new">New</span> Цены — как театральные билеты-стабы с перфорацией (круглые "вырезы") и пунктирными границами.</li>
+        <li><span class="tag tag-new">New</span> Отзывы — три разные записки: жёлтый стикер, открытка с маркой, лист в линейку.</li>
+        <li><span class="tag tag-new">New</span> Маркетинговый marquee-strip сверху: "Esimene nädal TASUTA · Pirita · Lapsed alates 3 aastat ★".</li>
+        <li><span class="tag tag-new">New</span> Курсы — нумерация 01/02/03 крупными цифрами на фоне, чередующийся макет (фото слева/справа).</li>
+        <li><span class="tag tag-new">New</span> Hero-stats не как 4 одинаковые плашки, а как редакторская типографическая полоса под линией.</li>
+        <li><span class="tag tag-new">New</span> Hand-drawn SVG-стрелки и каракули для "живости" (about-doodle, рукописные подписи под фото).</li>
+        <li><span class="tag tag-note">Note</span> Контент (эстонский текст) сохранён 1:1 с v4 — без изменений по просьбе заказчика.</li>
+      </ul>
+    </div>
+
+    <div class="log-entry">
+      <div class="log-version">
+        v5 — Bold-вариант светлой темы (промежуточная)
+        <span class="log-date">апрель 2026</span>
+      </div>
+      <ul class="log-list">
+        <li><span class="tag tag-new">New</span> Эксперимент с более жирной типографикой и контрастами в рамках светлой темы v4.</li>
+        <li><span class="tag tag-note">Note</span> По обратной связи заказчика выглядит "слишком AI" вместе с v4 — стала отправной точкой для v6.</li>
+      </ul>
+    </div>
 
     <div class="log-entry">
       <div class="log-version">
